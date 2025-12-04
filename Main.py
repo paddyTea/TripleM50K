@@ -18,4 +18,10 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(f"Hello world, {bot.user.name}")
 
+
+# @bot.event
+# async def on_message(song):
+#     await message.channel.send(song)
+
+
 bot.run(token, log_handler=handler, log_level=logging.DEBUG)
