@@ -21,29 +21,32 @@ driver.close()
 
 songAndArtist = song + ": " + artist
 
-#get the correct string outputted "Triple M"
-if songAndArtist != "Triple M" :
+# songAndArtist = "Rain Dragon"
+
+if songAndArtist.strip() != "Triple M Sydney 104.9:":
+    print("Song playing")
     df = pd.read_csv("MyCSVFile.csv")
     last_row = df.tail(1)
-    print(last_row)
     prevSong = last_row.iloc[0,0]
-    print(prevSong)
     
-    if df['Songs'].str.contains(songAndArtist).any():
-        print('duplicate found')
-    
-
-    # print(songAndArtist)
-    # file = open("MyCSVFile.csv","r")
-    # csvreader = csv.reader(file)
-    # for row in csvreader:
-    #     print(row)
-    # file.close()
-
     if songAndArtist != prevSong:
-        file = open("MyCSVFile.csv","a")
-        writer = csv.writer(file)
-        writer.writerow([songAndArtist])
-        file.close()
+        print("Song is not last recorded")
+        
+        #Condition if duplicate is found, Put bot message here
+        if df['Songs'].str.contains(songAndArtist).any():
+            print('Song has been played today')
+            #bot message loguic here
+        else:
+            print("Song has not been played today")
+            file = open("MyCSVFile.csv","a")
+            writer = csv.writer(file)
+            writer.writerow([songAndArtist])
+            file.close()
+    
+    else:
+        print("Song is last recorded")
 
+else:
+    print("Song is not playing")
 
+    
