@@ -21,14 +21,16 @@ driver.close()
 
 songAndArtist = song + ": " + artist
 
+#get the correct string outputted "Triple M"
 if songAndArtist != "Triple M" :
-    
     df = pd.read_csv("MyCSVFile.csv")
     last_row = df.tail(1)
     print(last_row)
     prevSong = last_row.iloc[0,0]
     print(prevSong)
-    # if(last_row contains songAndArtist)
+    
+    if df['Songs'].str.contains(songAndArtist).any():
+        print('duplicate found')
     
 
     # print(songAndArtist)
