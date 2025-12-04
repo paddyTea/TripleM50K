@@ -26,6 +26,8 @@ if songAndArtist != "Triple M" :
     df = pd.read_csv("MyCSVFile.csv")
     last_row = df.tail(1)
     print(last_row)
+    prevSong = last_row.iloc[0,0]
+    print(prevSong)
     # if(last_row contains songAndArtist)
     
 
@@ -36,10 +38,10 @@ if songAndArtist != "Triple M" :
     #     print(row)
     # file.close()
 
-    # if songAndArtist != 
-    
-    file = open("MyCSVFile.csv","a")
-    writer = csv.writer(file)
-    writer.writerow([songAndArtist])
-    file.close()
+    if songAndArtist != prevSong:
+        file = open("MyCSVFile.csv","a")
+        writer = csv.writer(file)
+        writer.writerow([songAndArtist])
+        file.close()
+
 
