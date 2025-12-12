@@ -9,7 +9,7 @@ from pathlib import Path
 
 now = datetime.now()
 date_time = now.strftime("%m-%d-%Y")
-csvfile = Path("TripleM " + date_time)
+csvfile = Path("TripleM " + date_time + ".txt")
 
 if not csvfile.is_file():
     print("enter loop")
